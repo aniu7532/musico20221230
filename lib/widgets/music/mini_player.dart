@@ -179,11 +179,11 @@ class _MiniPlayerState extends State<MiniPlayer> {
                 }
 
                 ///歌曲进度条自动播放完成时
-                if (duration != 0 && position >= duration) {
+                /*      if (duration != 0 && position >= duration) {
                   audioPlayerHelper.skipToNext(
                       playSelf:
                           audioPlayerHelper.playMethod == PlayMethod.loop);
-                }
+                }*/
                 return SizedBox(
                   height: 2,
                   width: double.infinity,

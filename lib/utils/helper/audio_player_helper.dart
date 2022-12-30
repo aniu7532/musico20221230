@@ -153,8 +153,18 @@ class AudioPlayerHelper {
 
   ///上一首
   void skipToPrevious() {
-    if (_audioHandler._player.hasPrevious) {
-      _audioHandler._player.seekToPrevious();
+    if (_audioHandler._player.hasPrevious &&
+        _audioHandler._player.previousIndex != 0) {
+      if (_nowPlayMethod == PlayMethod.loop) {
+        final previousIndex = (_audioHandler._player.previousIndex ?? 0) - 1;
+        _audioHandler._player.seek(
+          Duration.zero,
+          index: previousIndex,
+        );
+      } else {
+        _audioHandler._player.seekToPrevious();
+      }
+
       _audioHandler._player.play();
     } else {
       MyToast.showToast("It's already the first song");
@@ -163,11 +173,18 @@ class AudioPlayerHelper {
 
   ///下一首
   void skipToNext({bool playSelf = false}) {
-    //
-    stop();
     if (!playSelf) {
       if (_audioHandler._player.hasNext) {
-        _audioHandler._player.seekToNext();
+        if (_nowPlayMethod == PlayMethod.loop) {
+          final nextIndex = (_audioHandler._player.nextIndex ?? 0) + 1;
+          _audioHandler._player.seek(
+            Duration.zero,
+            index: nextIndex,
+          );
+        } else {
+          _audioHandler._player.seekToNext();
+        }
+
         _audioHandler._player.play();
       }
     } else {
@@ -175,6 +192,7 @@ class AudioPlayerHelper {
       seek(Duration.zero);
       play();
     }
+    _nowPlayMethod;
   }
 
   ///切换播放模式
@@ -187,7 +205,7 @@ class AudioPlayerHelper {
     } else if (_nowPlayMethod == PlayMethod.random) {
       audioPlayerHelper.audioPlayer.setShuffleModeEnabled(false);
       _nowPlayMethod = PlayMethod.loop;
-      audioPlayerHelper.audioPlayer.setLoopMode(LoopMode.all);
+      audioPlayerHelper.audioPlayer.setLoopMode(LoopMode.one);
     } else if (_nowPlayMethod == PlayMethod.loop) {
       audioPlayerHelper.audioPlayer.setShuffleModeEnabled(false);
       _nowPlayMethod = PlayMethod.sequential;

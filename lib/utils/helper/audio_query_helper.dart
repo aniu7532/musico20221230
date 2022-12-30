@@ -145,8 +145,12 @@ class AudioQueryHelper {
 
   //通过歌曲真实路径获取真实id
   Future<int> getRealId(String path) async {
-    final rst = await queryTrack();
-    final id = rst.where((element) => element.data == path).first.id;
+    final track = await queryTrack();
+    final rst = track.where((element) => element.data == path).toList();
+    if (ObjectUtil.isEmpty(rst)) {
+      return -1;
+    }
+    final id = rst.first.id;
     return id;
   }
 
@@ -250,7 +254,9 @@ class AudioQueryHelper {
     for (final element in songs) {
       final realId = await getRealId(element.data);
 
-      element.getMap['_id'] = realId;
+      if (realId != -1) {
+        element.getMap['_id'] = realId;
+      }
 
       // SongModel(element.getMap);
     }
