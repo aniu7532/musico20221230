@@ -6,7 +6,6 @@ import 'package:musico/const/app_const.dart';
 import 'package:musico/pages/imports/import_from_phone/import_from_phone_model.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
-import 'package:musico/utils/dialog_utils.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 final AudioQueryHelper audioQueryHelper = AudioQueryHelper();
@@ -19,8 +18,6 @@ class AudioQueryHelper {
   }
 
   static late final AudioQueryHelper _instance = AudioQueryHelper._();
-
-  late AudioQueryHelper _helper;
 
   late OnAudioQuery _onAudioQuery;
 
