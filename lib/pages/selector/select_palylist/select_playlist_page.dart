@@ -25,6 +25,11 @@ class _HandlePersonPageState extends BasePageState<SelectPlaylistPage>
   }
 
   @override
+  void onAddButtonPressed() {
+    model.createPlayList(context);
+  }
+
+  @override
   Widget buildContentWidget(item) {
     if (ObjectUtil.isEmpty(item)) {
       return const Text('该条数据为空!');

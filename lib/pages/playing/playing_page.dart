@@ -300,8 +300,8 @@ class _PlayingPageState extends BasePageState<PlayingPage>
               ///歌曲进度条自动播放完成时
               if (duration != 0 && position >= duration) {
                 audioPlayerHelper.skipToNext(
-                    playSelf: audioPlayerHelper.playMethod == PlayMethod.loop);
-                model.getStar();
+                  playSelf: audioPlayerHelper.playMethod == PlayMethod.loop,
+                );
               }
 
               return Column(

@@ -148,12 +148,14 @@ class AudioPlayerHelper {
   ///跳到某一首歌
   void skipSong(int pos) {
     _audioHandler._player.seek(Duration.zero, index: pos);
+    _audioHandler._player.play();
   }
 
   ///上一首
   void skipToPrevious() {
     if (_audioHandler._player.hasPrevious) {
       _audioHandler._player.seekToPrevious();
+      _audioHandler._player.play();
     } else {
       MyToast.showToast("It's already the first song");
     }
@@ -162,10 +164,11 @@ class AudioPlayerHelper {
   ///下一首
   void skipToNext({bool playSelf = false}) {
     //
-
+    stop();
     if (!playSelf) {
       if (_audioHandler._player.hasNext) {
         _audioHandler._player.seekToNext();
+        _audioHandler._player.play();
       }
     } else {
       stop();
@@ -184,7 +187,7 @@ class AudioPlayerHelper {
     } else if (_nowPlayMethod == PlayMethod.random) {
       audioPlayerHelper.audioPlayer.setShuffleModeEnabled(false);
       _nowPlayMethod = PlayMethod.loop;
-      audioPlayerHelper.audioPlayer.setLoopMode(LoopMode.one);
+      audioPlayerHelper.audioPlayer.setLoopMode(LoopMode.all);
     } else if (_nowPlayMethod == PlayMethod.loop) {
       audioPlayerHelper.audioPlayer.setShuffleModeEnabled(false);
       _nowPlayMethod = PlayMethod.sequential;
