@@ -1,0 +1,173 @@
+name: musico
+description: A new musci Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  rxdart: 0.27.7
+  # 状态管理
+  provider: 6.0.2
+  # 路由
+  auto_route: 3.2.4
+  # 网络请求
+  dio: 4.0.6
+  # 网络请求日志
+  pretty_dio_logger: 1.2.0-beta-1
+  connectivity_plus: 2.2.0
+  # 加密存储
+  flutter_secure_storage: 7.0.1
+  # 图片缓存
+  cached_network_image: 3.2.0
+  #图片选择  需要适配ios https://github.com/fluttercandies/flutter_wechat_assets_picker/blob/main/README-ZH.md
+  wechat_assets_picker: 7.2.0
+  #拍照 https://pub.flutter-io.cn/packages/wechat_camera_picker
+  wechat_camera_picker: 3.4.0
+  #图片显示  https://pub.flutter-io.cn/packages/photo_view
+  photo_view: 0.14.0
+  #视频播放  https://pub.flutter-io.cn/packages/video_player
+  video_player: 2.4.0
+  # Dart 常用工具类库 https://github.com/Sky24n/common_utils
+  flustars: 2.0.1
+  #屏幕适配 https://pub.flutter-io.cn/packages/flutter_screenutil
+  flutter_screenutil: 5.4.0
+  #文件加载配置
+  flutter_dotenv: 5.0.2
+  #普通日志打印
+  logger: 1.1.0
+  # 弹窗
+  flutter_easyloading: 3.0.3
+  #指示器
+  dots_indicator: ^2.1.0
+  #列表刷新加载
+  #https://github.com/peng8350/flutter_pulltorefresh/blob/master/README_CN.md
+  pull_to_refresh: 2.0.0
+  # 滑动文本 https://pub.dev/packages/marquee/install
+  marquee: 2.2.1
+  #加载动画 https://pub.dev/packages/loading_animation_widget/versions
+  loading_animation_widget: 1.1.0+5
+  #电话、email https://pub.dev/packages/url_launcher/install
+  url_launcher: 6.0.10
+  cupertino_icons: ^1.0.2
+  #事件传输 https://pub.flutter-io.cn/packages/event_bus
+  event_bus: 2.0.0
+  #设备信息 https://pub.flutter-io.cn/packages/device_info
+  device_info: 2.0.3
+  #权限请求  https://pub.flutter-io.cn/packages/permission_handler
+  permission_handler: 9.2.0
+  #国际化  https://pub.flutter-io.cn/packages/intl
+  intl: 0.17.0
+  #加载第三方网页
+  webview_flutter: 3.0.4
+  path_provider: ^2.0.11
+  open_file: 3.2.1
+  # 生成实体数据
+  freezed_annotation: 1.1.0
+  json_annotation: 4.4.0
+  # 音乐播放器
+  just_audio: 0.9.30
+  audio_service: 0.18.7
+  # 查询本地可播放音乐
+  on_audio_query: 2.6.1
+  # firebase
+  firebase_core: 2.4.0
+  firebase_analytics: 10.0.8
+  # facebook https://facebook.meedu.app/docs/5.x.x/example
+  flutter_facebook_auth: 5.0.0+1
+
+
+dependency_overrides:
+  decimal: 1.5.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  #测试
+  build_runner:
+
+  #  路由生成器
+  #  flutter packages pub run build_runner build --delete-conflicting-outputs
+  #  flutter packages pub run build_runner watch
+  auto_route_generator: 3.2.3
+  # 实体数据生成器
+  freezed: 1.1.1
+  json_serializable:
+
+  #lint检查
+  very_good_analysis: 2.4.0
+  #查找缺失、未提升、过度提升和未使用的依赖项的工具。
+  #用法： pub run dependency_validator
+  dependency_validator: 3.0.0
+  #生成静态资源
+  #用法：https://pub.flutter-io.cn/packages/flutter_gen_runner
+  #fluttergen -c 工程配置文件路径
+  #fluttergen -c pubspec.yaml
+  flutter_gen_runner:
+
+  #按字母顺序对导入进行排序,分组
+  #用法：flutter pub run import_sorter:main
+  import_sorter: 4.6.0
+
+
+
+#执行脚本
+# Install derry from https://pub.dev/packages/derry and run derry build, derry watch, derry gen
+scripts: derry.yaml
+
+
+
+#生成静态资源的配置
+# https://pub.dev/packages/flutter_gen, after new assets run derry gen
+flutter_gen:
+  output: lib/gen/ # Optional (no_data: lib/gen/)
+
+  #  integrations:
+  #    flutter_svg: true
+  #    flare_flutter: true
+
+  assets:
+    enabled: true
+  fonts:
+    enabled: false
+  colors:
+    enabled: true
+    inputs:
+      - assets/color/colors.xml
+
+
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+  #  generate: true
+  assets:
+    - assets/env/.env.dev
+    - assets/env/.env.prod
+    - assets/env/
+    - assets/audio/
+    - assets/images/
+    - assets/images/bottom_tabbar/
+    - assets/images/appbar/
+    - assets/images/no_data/
+    - assets/images/options/
+    - assets/images/imports/
+    - assets/images/setting/
+    - assets/images/play/
+
+  fonts:
+   - family: ZzIcons
+     fonts:
+       - asset: assets/icon/iconfont.ttf
+flutter_intl:
+  enabled: true

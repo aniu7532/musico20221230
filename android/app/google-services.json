@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "838224568543",
+    "project_id": "aniuflutter",
+    "storage_bucket": "aniuflutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838224568543:android:952eb5ef3bb3de2291896a",
+        "android_client_info": {
+          "package_name": "com.testlisten.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838224568543-jf90hnduirit2bjh3supeb5d29ftk3no.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwPwiftIxTciAHenVAJGBEunHqsGrMq1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838224568543-jf90hnduirit2bjh3supeb5d29ftk3no.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

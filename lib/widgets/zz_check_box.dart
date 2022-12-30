@@ -1,0 +1,280 @@
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:musico/gen/colors.gen.dart';
+
+///
+///Create by 李实 on 2022/6/26 10:24
+///
+///Description:
+///
+class ZzCheckbox extends LeafRenderObjectWidget {
+  const ZzCheckbox({
+    Key? key,
+    this.strokeWidth = 1,
+    this.value = false,
+    this.strokeColor = Colors.white,
+    this.fillColor = ColorName.themeColor,
+    this.radius = 2.5,
+    this.tristate = false,
+    this.onChanged,
+  }) : super(key: key);
+
+  final double strokeWidth; // “勾”的线条宽度
+  final Color strokeColor; // “勾”的线条宽度
+  final Color? fillColor; // 填充颜色
+  final bool? value; //选中状态
+  final bool tristate; //能否选择
+  final double radius; // 圆角
+  final ValueChanged<bool>? onChanged; // 选中状态发生改变后的回调
+
+  @override
+  RenderObject createRenderObject(BuildContext context) {
+    return RenderCustomCheckBox(
+      strokeWidth,
+      strokeColor,
+      fillColor ?? Theme.of(context).primaryColor,
+      value,
+      tristate,
+      radius,
+      onChanged,
+    );
+  }
+
+  @override
+  void updateRenderObject(context, RenderCustomCheckBox renderObject) {
+    if (renderObject.value != value) {
+      renderObject.animationStatus =
+          (value ?? false) ? AnimationStatus.forward : AnimationStatus.reverse;
+    }
+    renderObject
+      ..strokeWidth = strokeWidth
+      ..strokeColor = strokeColor
+      ..fillColor = fillColor ?? Theme.of(context).primaryColor
+      ..radius = radius
+      ..value = value
+      ..tristate = tristate
+      ..onChanged = onChanged;
+  }
+}
+
+class RenderCustomCheckBox extends RenderBox with RenderObjectAnimationMixin {
+  RenderCustomCheckBox(
+    this.strokeWidth,
+    this.strokeColor,
+    this.fillColor,
+    this.value,
+    this.tristate,
+    this.radius,
+    this.onChanged,
+  ) {
+    progress = (value ?? false) ? 1 : 0;
+  }
+  bool? value;
+  bool tristate;
+  int pointerId = -1;
+  double strokeWidth;
+  Color strokeColor;
+  Color fillColor;
+  double radius;
+  ValueChanged<bool>? onChanged;
+  @override
+  bool get isRepaintBoundary => true;
+
+  //背景动画时长占比（背景动画要在前40%的时间内执行完毕，之后执行打勾动画）
+  final double bgAnimationInterval = .4;
+
+  @override
+  void doPaint(PaintingContext context, Offset offset) {
+    final rect = offset & size;
+    _drawBackground(context, rect);
+    if (tristate) {
+      _drawCheckLine(context, rect);
+    } else {
+      _drawCheckMark(context, rect);
+    }
+  }
+
+  void _drawBackground(PaintingContext context, Rect rect) {
+    final color = (value ?? false) ? fillColor : const Color(0xFFC5CAD5);
+    final paint = Paint()
+      ..isAntiAlias = true
+      ..style = PaintingStyle.fill //填充
+      ..strokeWidth
+      ..color = color;
+
+    // 我们对矩形做插值
+    final outer = RRect.fromRectXY(rect, radius, radius);
+    final rects = [
+      rect.inflate(-strokeWidth),
+      Rect.fromCenter(center: rect.center, width: 0, height: 0)
+    ];
+    final rectProgress = Rect.lerp(
+      rects[0],
+      rects[1],
+      tristate ? 1 : min(progress, bgAnimationInterval) / bgAnimationInterval,
+    )!;
+
+    final inner = RRect.fromRectXY(rectProgress, 0, 0);
+    // 画背景
+    context.canvas.drawDRRect(outer, inner, paint);
+  }
+
+  //画 "勾"
+  void _drawCheckMark(PaintingContext context, Rect rect) {
+    // 在画好背景后再画前景
+    if (progress > bgAnimationInterval) {
+      //确定中间拐点位置
+      final secondOffset = Offset(
+        rect.left + rect.width / 2.4,
+        rect.bottom - rect.height / 3.4,
+      );
+      // 第三个点的位置
+      final lastOffset = Offset(
+        rect.right - rect.width / 4.8,
+        rect.top + rect.height / 2.6,
+      );
+
+      // 我们只对第三个点的位置做插值
+      final _lastOffset = Offset.lerp(
+        secondOffset,
+        lastOffset,
+        (progress - bgAnimationInterval) / (1 - bgAnimationInterval),
+      )!;
+
+      // 将三个点连起来
+      final path = Path()
+        ..moveTo(rect.left + 2.0 + rect.width / 10, rect.top + rect.height / 2)
+        ..lineTo(secondOffset.dx, secondOffset.dy)
+        ..lineTo(_lastOffset.dx, _lastOffset.dy);
+
+      final paint = Paint()
+        ..isAntiAlias = true
+        ..style = PaintingStyle.stroke
+        ..color = strokeColor
+        ..strokeWidth = strokeWidth;
+
+      context.canvas.drawPath(path, paint..style = PaintingStyle.stroke);
+    }
+  }
+
+  //画 "-"
+  void _drawCheckLine(PaintingContext context, Rect rect) {
+    // 在画好背景后再画前景
+    //确定中间拐点位置
+    final firstOffset = Offset(
+      3,
+      rect.height / 2,
+    );
+    // 第三个点的位置
+    final lastOffset = Offset(
+      rect.width - 3,
+      rect.height / 2,
+    );
+
+    final paint = Paint()
+      ..isAntiAlias = true
+      ..style = PaintingStyle.stroke
+      ..color = strokeColor
+      ..strokeWidth = 1.5;
+
+    context.canvas.drawLine(
+      firstOffset,
+      lastOffset,
+      paint..style = PaintingStyle.stroke,
+    );
+  }
+
+  @override
+  void performLayout() {
+    // 如果父组件指定了固定宽高，则使用父组件指定的，否则宽高默认置为 25
+    size = constraints.constrain(
+      constraints.isTight ? Size.infinite : const Size(16, 16),
+    );
+  }
+
+  // 必须置为true，否则不可以响应事件
+  @override
+  bool hitTestSelf(Offset position) => true;
+
+  // 只有通过点击测试的组件才会调用本方法
+  @override
+  void handleEvent(PointerEvent event, covariant BoxHitTestEntry entry) {
+    if (tristate) {
+      return;
+    }
+    if (event.down) {
+      pointerId = event.pointer;
+    } else if (pointerId == event.pointer) {
+      // 判断手指抬起时是在组件范围内的话才触发onChange
+      if (size.contains(event.localPosition)) {
+        onChanged?.call(!(value ?? false));
+      }
+    }
+  }
+}
+
+mixin RenderObjectAnimationMixin on RenderObject {
+  double _progress = 0;
+  int? _lastTimeStamp;
+
+  // 动画时长，子类可以重写
+  Duration get duration => const Duration(milliseconds: 200);
+  AnimationStatus _animationStatus = AnimationStatus.completed;
+
+  set animationStatus(AnimationStatus status) {
+    if (_animationStatus != status) {
+      markNeedsPaint();
+    }
+    _animationStatus = status;
+  }
+
+  double get progress => _progress;
+
+  set progress(double progress) {
+    _progress = progress.clamp(0, 1);
+  }
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    doPaint(context, offset);
+    _scheduleAnimation();
+  }
+
+  void _scheduleAnimation() {
+    if (_animationStatus != AnimationStatus.completed) {
+      SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
+        if (_lastTimeStamp != null) {
+          double delta = (timeStamp.inMilliseconds - _lastTimeStamp!) /
+              duration.inMilliseconds;
+
+          //在特定情况下，可能在一帧中连续的往frameCallback中添加了多次，导致两次回调时间间隔为0，
+          //这种情况下应该继续请求重绘。
+          if (delta == 0) {
+            markNeedsPaint();
+            return;
+          }
+
+          if (_animationStatus == AnimationStatus.reverse) {
+            delta = -delta;
+          }
+
+          _progress = _progress + delta;
+          if (_progress >= 1 || _progress <= 0) {
+            _animationStatus == AnimationStatus.completed;
+            _progress = _progress.clamp(0, 1);
+          }
+        }
+        markNeedsPaint();
+        _lastTimeStamp = timeStamp.inMilliseconds;
+      });
+    } else {
+      _lastTimeStamp = null;
+    }
+  }
+
+  //子类实现绘制逻辑方法
+  void doPaint(PaintingContext context, Offset offset);
+}

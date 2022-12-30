@@ -1,0 +1,26 @@
+buildscript {
+    apply from: 'config.gradle'
+    addRepos(repositories)
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:$build_versions.android_gradle_plugin"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
+        classpath 'com.google.gms:google-services:4.3.14'
+    }
+}
+
+allprojects {
+    addRepos(repositories)
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

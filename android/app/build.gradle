@@ -1,0 +1,130 @@
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+def keystorePropertiesFile = rootProject.file("key.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    defaultConfig {
+        applicationId "com.testlisten.free"
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+
+//        ndk {
+//            abiFilters "armeabi-v7a", 'arm64-v8a', 'x86'
+//        }
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            v1SigningEnabled true
+        }
+    }
+
+    applicationVariants.all { variant ->
+        //这个修改输出的APK路径
+        variant.outputs.all {
+            if( outputFileName == 'app-release.apk' ){
+                def apk_time = new Date().format("YYYYMMdd-HHmm", TimeZone.getTimeZone("GMT+08:00"))
+                outputFileName ="musico_${variant.buildType.name}_${variant.versionName}_${apk_time}.apk"
+            }
+            println outputFileName
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+//            useProguard true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//指定混淆配置文件为 proguard-rules.pro
+            minifyEnabled false //删除无用代码 这个配置必须要设置为false，不然idata扫码会崩溃
+            shrinkResources false //这个配置必须要设置为false，不然idata扫码会崩溃
+            ndk{
+                //之前看QQ微信等大佬都只用"armeabi"
+                abiFilters "armeabi-v7a","arm64-v8a"
+            }
+        }
+        debug{
+            debuggable true
+            signingConfig signingConfigs.release
+            ndk {
+                //这里配置开发调试时的，根据个人需要增减少，x86建议加上不然部分模拟器回报错
+                abiFilters  "armeabi-v7a","arm64-v8a","x86"
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+
+dependencies {
+    // Kotlin
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${build_versions.kotlin}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${build_versions.kotlin}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${build_versions.kotlin}")
+//    implementation("com.tencent.map.geolocation:TencentLocationSdk-openplatform:${build_versions.location_sdk}")
+    implementation("com.tencent.map:tencent-map-vector-sdk:${build_versions.map_sdk}")
+//    implementation("androidx.multidex:multidex:${build_versions.multidex}")
+
+    implementation("com.github.7moor-tech:7moor_visitorIm_sdkUiAx:${build_versions.im_moor}")
+    // implementation files('libs/iscanuserapi.jar')
+}

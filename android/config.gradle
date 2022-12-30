@@ -1,0 +1,49 @@
+
+/**
+ * APP版本号、插件版本、编译相关版本管理
+ */
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.target_sdk = 29
+build_versions.compile_sdk = 33
+build_versions.android_gradle_plugin = "7.0.2"
+build_versions.kotlin = '1.6.10'
+build_versions.location_sdk = '7.4.6'
+build_versions.map_sdk = '4.5.5.1'
+build_versions.multidex = '2.0.1'
+build_versions.im_moor = '4.1.0-fix0331'
+ext.build_versions = build_versions
+
+/**
+ * 仓库地址管理
+ */
+def addRepos(RepositoryHandler handler) {
+    handler.maven {
+        allowInsecureProtocol true
+        url 'https://maven.aliyun.com/repository/central'
+    }
+    handler.maven {
+        allowInsecureProtocol true
+        url 'https://maven.aliyun.com/repository/public'
+    }
+    handler.maven {
+        allowInsecureProtocol true
+        url 'https://maven.aliyun.com/repository/google'
+    }
+    handler.maven {
+        allowInsecureProtocol true
+        url 'https://maven.aliyun.com/repository/gradle-plugin'
+    }
+    handler.maven {
+        allowInsecureProtocol true
+        url 'https://jitpack.io'
+    }
+    handler.maven {
+        allowInsecureProtocol true
+        url 'https://s01.oss.sonatype.org/content/groups/public'
+    }
+    handler.mavenCentral()
+    handler.google()
+}
+
+ext.addRepos = this.&addRepos

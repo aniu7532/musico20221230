@@ -1,0 +1,66 @@
+#使用sorter格式化导入的包
+format:
+  - dart format lib .
+  - flutter pub run import_sorter:main
+  - flutter format lib
+
+#构建一次 source ~/.bash_profile
+build_once: flutter pub run build_runner build --delete-conflicting-outputs
+
+# Run whenever start working. It will generate Freezed classes
+watch: flutter pub run build_runner watch --delete-conflicting-outputs
+
+#生成需要自动构建的文件
+gen:
+  - flutter pub get
+  - flutter packages pub run build_runner build
+
+#清空并重新自动生产文件
+gen_rebuild:
+  flutter clean
+  flutter pub cache repair
+  flutter pub get
+  flutter pub run build_runner clean
+  flutter pub run build_runner build --delete-conflicting-outputs
+
+#构建开发包
+build_apk_dev:
+  - flutter clean
+  - flutter pub get
+  - flutter build apk --flavor development -t lib/dev.dart
+
+#构建生产包
+build_apk_prod:
+  - flutter clean
+  - flutter pub get
+  - flutter build apk lib/fat.dart
+  - flutter build apk lib/prod.dart --target-platform armeabi-v7a,arm64-v8a,x86 --split-per-abi
+
+#启动IOS
+start_ios:
+  - xcrun simctl list
+  - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/
+
+#清空并重新获取插件
+clean:
+  - flutter clean
+  - flutter pub get
+
+purge:
+  - pod deintegrate
+  #- rm Flutter/Flutter.podspec
+  - flutter clean
+  - flutter pub get
+  #- pod install
+  #- flutter run
+
+purge_all:
+  - pod deintegrate
+  - rm Flutter/Flutter.podspec
+  - flutter clean
+  - flutter pub cache repair
+  - flutter pub get
+  #- pod install
+  - flutter run
+
+# FIREBASE_TOKEN 1//06ULV0m0vi5RPCgYIARAAGAYSNgF-L9IrwtGWDxofH-wWvfPs3Hz6oJrp8_o0lRK8YQHYyQkh9GmMQ6TMSXuaVF4EV3ctHQrIRA

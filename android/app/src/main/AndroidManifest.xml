@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.aniu.flutter.aniu_base">
+
+        <uses-permission android:name="android.permission.INTERNET"/>
+        <uses-permission android:name="android.permission.WAKE_LOCK"/>
+        <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+        <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+            android:minSdkVersion="30"/>
+
+
+    <queries>
+        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
+    </queries>
+
+    <!-- Provide required visibility configuration for API level 30 and above -->
+    <queries>
+        <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
+        <application
+            android:label="Musico"
+            android:icon="@mipmap/ic_launcher"
+            android:requestLegacyExternalStorage="true"
+            >
+            <activity
+                android:name="com.ryanheise.audioservice.AudioServiceActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/LaunchTheme"
+                android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
+                android:hardwareAccelerated="true"
+                android:windowSoftInputMode="adjustResize"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN"/>
+                    <category android:name="android.intent.category.LAUNCHER"/>
+                </intent-filter>
+            </activity>
+
+            <service
+                android:name="com.ryanheise.audioservice.AudioService"
+                android:foregroundServiceType="mediaPlayback"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+                <intent-filter>
+                    <action android:name="android.media.browse.MediaBrowserService" />
+                </intent-filter>
+            </service>
+
+            <receiver
+                android:name="com.ryanheise.audioservice.MediaButtonReceiver"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+                <intent-filter>
+                    <action android:name="android.intent.action.MEDIA_BUTTON" />
+                </intent-filter>
+            </receiver>
+
+            <meta-data
+                android:name="flutterEmbedding"
+                android:value="2" />
+
+            <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+            <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
+        </application>
+    </manifest>

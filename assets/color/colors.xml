@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--主题色-->
+    <color name="themeColor">#FF141414</color>
+    <color name="secondaryColor">#FF92DD13</color>
+    <!--背景色-->
+    <color name="bgColor">#FF141414</color>
+    <!--Dialog背景色-->
+    <color name="dialogBgColor">#FF272727</color>
+    <!--进度条的灰色-->
+    <color name="progressBgColor">#FF202227</color>
+    <!--普通提示颜色，及按钮边框-->
+    <color name="normalTipsColor">#FFbdbdbd</color>
+    <!--tab的选中颜色-->
+    <color name="normalTipsColor">#FFFF9F1A</color>
+    <!--tab未选中颜色-->
+    <color name="normalTipsColor">#FF333333</color>
+
+    <color name="primaryColor">#139960</color>
+    <color name="mlDarkGrey">#75787b</color>
+    <color name="mlMediumGrey">#a7a8aa</color>
+    <color name="lightGrey">#F7FAF9</color>
+    <color name="black">#212121</color>
+    <color name="error">#D80000</color>
+    <color name="inProgressYellow">#CC9233</color>
+    <!--分割线颜色-->
+    <color name="separatorLine">#BEBEBE</color>
+    <!--文字颜色-->
+    <!--正常文字颜色-->
+    <color name="normalTxtColor">#5E5E5E</color>
+    <!--文字颜色41485D-->
+    <color name="txtColor41485d">#41485D</color>
+    <!--hint文字颜色-->
+    <color name="hintTxtColor">#C5CAD5</color>
+    <!--边框颜色E2E4EA-->
+    <color name="borderColorE2e4ea">#E2E4EA</color>
+    <!--删除色FF5B60-->
+    <color name="deleteIconColor">#FF5B60</color>
+    <!--背景绿色28AA91-->
+    <color name="greenColor28aa91">#28AA91</color>
+    <!--金额类FF823A-->
+    <color name="amountColorFf823a">#FF823A</color>
+    <!--文本858B9C-->
+    <color name="textColor858b9c">#858B9C</color>
+    <!--文本111A34-->
+    <color name="textColor111a34">#111A34</color>
+    <!--文本262626-->
+    <color name="textColor262626">#262626</color>
+    <!--背景色f5f6f7-->
+    <color name="bgColorF5f6f7">#f5f6f7</color>
+    <!--客户交易明细F9FAFB-->
+    <color name="tradeColorF9FAFB">#F9FAFB</color>
+    <color name="theme33Color">#1A2B83FA</color>
+    <color name="greenColor1A28aa91">#1A28aa91</color>
+    <color name="greenColorF9AC14">#F9AC14</color>
+
+
+</resources>
