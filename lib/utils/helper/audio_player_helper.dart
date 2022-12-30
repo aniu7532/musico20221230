@@ -24,9 +24,6 @@ class AudioPlayerHelper {
     if (ObjectUtil.isNotEmpty(_audioHandler)) {
       if (ObjectUtil.isNotEmpty(_audioHandler._player)) {
         if (ObjectUtil.isNotEmpty(_audioHandler._player.sequence)) {
-          print(
-              '_audioHandler._player.currentIndex : ${_audioHandler._player.currentIndex}');
-
           return _audioHandler
               ._player
               .sequence?[_audioHandler._player.currentIndex ?? 0]
@@ -233,7 +230,8 @@ class AudioPlayerHelper {
   void delFromTrack(int pos, SongModel? songModel) {
     if (_nowPlaylistId == null && _audioHandler._player.audioSource != null) {
       if (ObjectUtil.isNotEmpty(_audioHandler.playSongList) &&
-          pos < _audioHandler.playSongList.length) {
+          pos < _audioHandler.playSongList.length &&
+          songModel?.title == nowSongModel?.title) {
         _audioHandler.playSongList.removeAt(pos);
       }
 
