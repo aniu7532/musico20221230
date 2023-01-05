@@ -1,11 +1,11 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:musico/app/myapp.dart';
 import 'package:musico/base/refresh_list/list_more_page_searchbar_mixin.dart';
 import 'package:musico/gen/assets.gen.dart';
 import 'package:musico/router/router.gr.dart';
 import 'package:musico/utils/toast_util.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 mixin _Protocol {}
@@ -33,9 +33,10 @@ class SettingModel extends BaseListMoreModel<ImportItemBean> with _Protocol {
         icon: Assets.images.setting.iconLanguage,
       ),*/
       ImportItemBean(
-          title: 'Contact Us',
-          description: 'Contact Us',
-          icon: Assets.images.setting.iconContactUs),
+        title: 'Contact Us',
+        description: 'Contact Us',
+        icon: Assets.images.setting.iconContactUs,
+      ),
       /*  ImportItemBean(
         title: 'Score',
         description: 'Score',
@@ -62,11 +63,12 @@ class SettingModel extends BaseListMoreModel<ImportItemBean> with _Protocol {
     }
   }
 
-  ///点击时间
+  ///点击
   void click(int pos) {
     switch (pos) {
       case 0:
         _openUrl();
+
         break;
       case 1:
         appRouter.push(
@@ -110,10 +112,10 @@ void loginFaceBook() async {
 
 Future<void> _sendAnalyticsEvent() async {
   await FirebaseAnalytics.instance.logEvent(
-    name: "select_content",
+    name: 'select_content',
     parameters: {
-      "content_type": "image",
-      "item_id": 'aniu',
+      'content_type': 'image',
+      'item_id': 'ani',
     },
   );
 }

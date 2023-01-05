@@ -1,8 +1,8 @@
 import 'dart:io' show Platform;
 
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:musico/http/model/token.dart';
 import 'package:musico/http/store_key.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class TokenRepositoryProtocol {

@@ -94,6 +94,11 @@ const Widget dividerBottomDialogWithOutPadding = SizedBox(
   width: double.infinity,
   child: DecoratedBox(decoration: BoxDecoration(color: Color(0xFF2F2F2F))),
 );
+const Widget divider0xFF1F1F1F = SizedBox(
+  height: 1,
+  width: double.infinity,
+  child: DecoratedBox(decoration: BoxDecoration(color: Color(0xFF2F2F2F))),
+);
 
 final Widget dividerBottomDialog = Container(
   padding: const EdgeInsets.symmetric(horizontal: 16),

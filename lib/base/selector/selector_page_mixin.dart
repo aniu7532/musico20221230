@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:musico/app/myapp.dart';
 import 'package:musico/app/zz_icon.dart';
 import 'package:musico/base/base_page.dart';
@@ -16,6 +15,7 @@ import 'package:musico/widgets/zz_app_bar.dart';
 import 'package:musico/widgets/zz_icon_button.dart';
 import 'package:musico/widgets/zz_scaffold.dart';
 import 'package:musico/widgets/zz_title_widget.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 ///选择器公用Mixin
 ///搜索功能、列表展示、右边抽屉分类选择

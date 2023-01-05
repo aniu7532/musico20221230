@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:musico/base/base_page.dart';
 import 'package:musico/base/provider_widget.dart';
-import 'package:musico/base/view_state_model.dart';
 import 'package:musico/base/refresh_list/view_state_refresh_list_model.dart';
+import 'package:musico/base/view_state_model.dart';
 import 'package:musico/base/view_state_widget.dart';
 import 'package:musico/gen/colors.gen.dart';
-import 'package:musico/utils/divider_urils.dart';
 import 'package:musico/widgets/search_textfield_widget.dart';
 import 'package:musico/widgets/zz_app_bar.dart';
 import 'package:musico/widgets/zz_scaffold.dart';
 import 'package:musico/widgets/zz_title_widget.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 ///管理页公共Mixin
 ///M: 数据控制model
@@ -68,9 +67,6 @@ mixin ListMoreSearchPageStateMixin<T extends BasePage,
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       height: 40,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-      ),
       child: SearchTextFieldWidget(
         hintText: model.searchHintText,
         keyWord: model.searchKey,
@@ -86,6 +82,7 @@ mixin ListMoreSearchPageStateMixin<T extends BasePage,
         onSearchType: (type) {
           model.setSearchType = type;
         },
+        showSearchButton: false,
         showVoiceButton: model.showVoiceInput,
         showScanCodeButton: model.showScanInput,
         scanFitterCallback: model.scanFitterCallback,
@@ -103,15 +100,17 @@ mixin ListMoreSearchPageStateMixin<T extends BasePage,
     ///如果有下拉菜单,包裹在菜单里面
     final result = wrapDropDownMenu(content);
 
-    return Column(children: <Widget>[
-      ///搜索
-      searchBar,
+    return model.searchWidgetOnAppbar
+        ? result
+        : Column(children: <Widget>[
+            ///搜索
+            searchBar,
 
-      ///列表
-      Expanded(
-        child: result,
-      ),
-    ]);
+            ///列表
+            Expanded(
+              child: result,
+            ),
+          ]);
   }
 
   @protected
@@ -198,8 +197,24 @@ mixin ListMoreSearchPageStateMixin<T extends BasePage,
   ///重载，实现自定义的AppBar
   @protected
   Widget buildAppBar() {
+    return model.searchWidgetOnAppbar
+        ? buildAppBarWithSearch()
+        : ZzAppBar(
+            leading: model.needBack ? null : const SizedBox.shrink(),
+            title: buildTitle(),
+            actions: <Widget>[
+              ...getActions(),
+            ],
+          );
+  }
+
+  ///重载，实现自定义的AppBar
+  @protected
+  Widget buildAppBarWithSearch() {
     return ZzAppBar(
-      title: buildTitle(),
+      leading: model.needBack ? null : const SizedBox.shrink(),
+      leadingWidth: 0.0,
+      title: buildSearchWidget(),
       actions: <Widget>[
         ...getActions(),
       ],
@@ -314,6 +329,12 @@ abstract class BaseListMoreModel<T> extends ViewStateRefreshListModel<T> {
   ///是否显示搜索框
   bool showSearchWidget = true;
 
+  ///是否把搜索框 放在 appbar上面
+  bool searchWidgetOnAppbar = false;
+
+  ///是否需要返回按钮
+  bool needBack = true;
+
   double offset = 200;
 
   ///为0时，使用分类抽屉
@@ -332,7 +353,7 @@ abstract class BaseListMoreModel<T> extends ViewStateRefreshListModel<T> {
   bool showScanInput = false;
 
   ///输入框提示文字
-  String searchHintText = '请输入';
+  String searchHintText = '';
 
   SearchType searchType = SearchType.TEXT;
 

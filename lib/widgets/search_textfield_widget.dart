@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:musico/app/zz_icon.dart';
+import 'package:musico/gen/assets.gen.dart';
 import 'package:musico/gen/colors.gen.dart';
+import 'package:musico/utils/font_style_utils.dart';
 import 'package:musico/utils/size_utils.dart';
+import 'package:musico/widgets/music/asset_button.dart';
 
 enum SearchType {
   TEXT,
@@ -167,19 +170,18 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
     Widget result = Container(
       height: sizeUtil.h55,
       decoration: BoxDecoration(
-        color: widget.bgColor ?? const Color(0xFFF9FAFB),
+        color: widget.bgColor ?? const Color(0xff343434),
         borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           InkWell(
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.fromLTRB(16, 7, 8, 8),
-              child: Icon(
-                ZzIcons.icon_sousu,
-                size: 16,
-                color: Color(0xFFC5CAD5),
+              child: AssetButton(
+                asset: Assets.images.index.searchGreen,
+                height: 19,
               ),
             ),
             onTap: () {
@@ -198,18 +200,18 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
               textInputAction: TextInputAction.search,
               style: const TextStyle(
                 fontWeight: FontWeight.normal,
-                color: Color.fromRGBO(51, 51, 51, 1),
+                color: Color(0xffffffff),
                 fontSize: 15,
               ),
               autofocus: widget.autoFocus ?? false, //进入页面后是否直接获取输入框焦点
               maxLines: 1,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.all(1),
-                hintText: widget.hintText ?? '编码/名称',
+                hintText: widget.hintText ?? '',
                 hintStyle: const TextStyle(
                   fontWeight: FontWeight.normal,
-                  color: Color(0xFFC5CAD5),
-                  fontSize: 13,
+                  color: Color(0xff949494),
+                  fontSize: 12,
                 ),
                 border: _border,
                 enabledBorder: _border,
@@ -317,7 +319,10 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
           Expanded(
             child: result,
           ),
-          GestureDetector(
+          const SizedBox(
+            width: 10,
+          ),
+          InkWell(
             onTap: () {
               //if(verifyUpdateText())
               //收起键盘
@@ -328,19 +333,16 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
                 widget.onSubmitCallback!(controller.text);
             },
             child: Container(
-              width: 44,
-              height: 26,
-              alignment: Alignment.centerRight,
+              width: 64,
+              height: 32,
+              alignment: Alignment.center,
               decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(4))),
+                color: ColorName.secondaryColor,
+                borderRadius: BorderRadius.all(Radius.circular(4)),
+              ),
               child: const Text(
-                '搜索',
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  color: ColorName.themeColor,
-                  fontSize: 16,
-                ),
+                'Search',
+                style: FSUtils.normal_14_FFFFFF,
               ),
             ),
           ),
@@ -352,6 +354,6 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
   }
 
   final InputBorder _border = const OutlineInputBorder(
-    borderSide: BorderSide(color: Color(0xFFF5F5F5), width: 0.0),
+    borderSide: BorderSide(color: Color(0xff343434), width: 0.0),
   );
 }

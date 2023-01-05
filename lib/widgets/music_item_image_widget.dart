@@ -1,10 +1,9 @@
-import 'package:musico/widgets/file_select/image_preview_page.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:musico/const/app_common.dart';
 import 'package:musico/http/api_provider.dart';
 import 'package:musico/http/app_exception.dart';
 import 'package:musico/utils/image_utils.dart';
+import 'package:musico/widgets/file_select/image_preview_page.dart';
 
 ///歌曲图片
 class MusicImageWidget extends StatelessWidget {
@@ -128,14 +127,14 @@ class ImageWrapper extends StatelessWidget {
         if (useFullPath) {
           imgUrls.add(url);
         } else {
-          imgUrls.add('${appCommon.baseOssUrl}$url');
+          imgUrls.add(url);
         }
       }
     } else {
       if (useFullPath) {
         imgUrls.add(imageUrl);
       } else {
-        imgUrls.add('${appCommon.baseOssUrl}$imageUrl');
+        imgUrls.add(imageUrl);
       }
     }
     return imgUrls;

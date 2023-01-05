@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:musico/base/base_page.dart';
 import 'package:musico/base/refresh_list/list_more_page_searchbar_mixin.dart';
 import 'package:musico/gen/assets.gen.dart';
@@ -5,8 +7,6 @@ import 'package:musico/pages/home/library/playlist_detail/playlist_detail_model.
 import 'package:musico/utils/font_style_utils.dart';
 import 'package:musico/widgets/music/mini_player.dart';
 import 'package:musico/widgets/music/music_item.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///playlist detail
 class PlaylistDetailPage extends BasePage {

@@ -1,5 +1,9 @@
 import 'dart:io';
 
+import 'package:dots_indicator/dots_indicator.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:musico/base/base_page.dart';
 import 'package:musico/base/base_page_mixin.dart';
 import 'package:musico/gen/colors.gen.dart';
@@ -7,10 +11,6 @@ import 'package:musico/pages/imports/import_from_computer/import_from_computer_m
 import 'package:musico/utils/font_style_utils.dart';
 import 'package:musico/utils/strings.dart';
 import 'package:musico/utils/toast_util.dart';
-import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///ImportFromComputer
 class ImportFromComputerPage extends BasePage {

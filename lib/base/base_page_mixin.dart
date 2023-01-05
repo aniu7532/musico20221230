@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:musico/base/base_page.dart';
 import 'package:musico/base/provider_widget.dart';
 import 'package:musico/base/view_state_model.dart';
@@ -5,7 +6,6 @@ import 'package:musico/base/view_state_widget.dart';
 import 'package:musico/widgets/zz_app_bar.dart';
 import 'package:musico/widgets/zz_scaffold.dart';
 import 'package:musico/widgets/zz_title_widget.dart';
-import 'package:flutter/material.dart';
 
 ///页面加载数据使用
 ///M: 数据控制model

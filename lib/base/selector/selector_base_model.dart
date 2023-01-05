@@ -1,9 +1,9 @@
+import 'package:flustars/flustars.dart';
+import 'package:flutter/material.dart';
 import 'package:musico/app/myapp.dart';
 import 'package:musico/base/basebeans/option_list.dart';
 import 'package:musico/base/refresh_list/list_more_page_searchbar_mixin.dart';
 import 'package:musico/widgets/search_textfield_widget.dart';
-import 'package:flustars/flustars.dart';
-import 'package:flutter/material.dart';
 
 ///选择器公用Model
 abstract class BaseSelectorModel<T> extends BaseListMoreModel {

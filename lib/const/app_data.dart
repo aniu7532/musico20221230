@@ -1,4 +1,3 @@
-import 'package:musico/const/user_bean.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 
@@ -12,34 +11,15 @@ class AppData {
   ///rootContext
   static late BuildContext rootContext;
 
+  ///是否资源版本
+  static bool isWithData = true;
+
+  ///deviceID
+  static String deviceID = '';
+
   ///使用字体缩放
   static bool useScaleText = true;
 
-  ///判断设置是否是PDA
-  static bool isPdaDevice = false;
-
   ///设置是否打印网络返回日志
   static bool useResponseBodyLog = true;
-
-  ///首页开单页是否显示状态
-  static bool isMainBillPageShow = true;
-
-  ///首页商品页面是否显示
-  static bool isMainGoodsPageShow = false;
-
-  String proxy = '';
-
-  ///是否允许体验一下
-  static bool isAllowExperience = false;
-
-  ///是否是上架的版本
-  static bool isShelfApp = false;
-
-  ///登录后用户的信息
-  static UserBean? userBean;
-
-  ///允许体验时的体验账号信息
-  static String corpId = '';
-  static String wxCorpId = '';
-  static String wxUserId = '';
 }

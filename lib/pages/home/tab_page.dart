@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:musico/const/app_data.dart';
+import 'package:musico/utils/helper/audio_player_helper.dart';
 import 'package:musico/utils/toast_util.dart';
 import 'package:musico/widgets/common/tab_widget.dart';
 
@@ -43,19 +44,22 @@ class TabPage extends StatelessWidget {
       onWillPop: willPop,
       child: AutoTabsScaffold(
         animationDuration: const Duration(milliseconds: 30),
-        routes: [
-          TabTrackRoute(),
-          TabLibraryRoute(),
-          TabImportRoute(),
-          TabSettingRoute(),
-        ],
+        routes: AppData.isWithData
+            ? [
+                TabIndexRoute(),
+                TabSearchRoute(),
+              ]
+            : [
+                TabTrackRoute(),
+                TabLibraryRoute(),
+                TabImportRoute(),
+                TabSettingRoute(),
+              ],
         bottomNavigationBuilder: (_, tabsRouter) {
           appTabsRouter = tabsRouter;
           return BottomTabBar(
             selectedIndex: tabsRouter.activeIndex,
             onItemSelected: (index) {
-              AppData.isMainBillPageShow = index == 0;
-              AppData.isMainGoodsPageShow = index == 2;
               tabsRouter.setActiveIndex(index);
             },
             items: <BottomTabBarItem>[
@@ -110,6 +114,8 @@ class TabPage extends StatelessWidget {
     }
 
     //   ZzPlugin.startToDesktop();
+
+    await audioPlayerHelper.dispose();
 
     return true;
   }

@@ -38,6 +38,10 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     compileSdkVersion build_versions.compile_sdk
 
+    packagingOptions {
+        jniLibs.useLegacyPackaging = true
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }

@@ -1,11 +1,12 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:musico/app/myapp.dart';
 import 'package:musico/gen/assets.gen.dart';
 import 'package:musico/gen/colors.gen.dart';
 import 'package:musico/router/router.gr.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:musico/utils/helper/database_helper.dart';
 
 ///启动页
 class SplashPage extends StatefulWidget {
@@ -27,12 +28,14 @@ class _SplashPageState extends State<SplashPage>
     //隐藏头部底部导航栏 以达到全屏效果
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     //更新以及跳转
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) async {
-      checkUpgrade();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await checkUserMode();
     });
     //进度条控制器
     controller = AnimationController(
-        vsync: this, duration: Duration(seconds: splashTime));
+      vsync: this,
+      duration: const Duration(seconds: splashTime),
+    );
     controller.forward();
   }
 
@@ -64,11 +67,11 @@ class _SplashPageState extends State<SplashPage>
                     .image(fit: BoxFit.fill, height: 36)),
           ),
           Positioned(
-              bottom: 90,
-              left: 0,
-              right: 0,
-              child: Center(
-                  child: AnimatedBuilder(
+            bottom: 90,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: AnimatedBuilder(
                 animation: controller,
                 builder: (BuildContext context, Widget? child) {
                   return SizedBox(
@@ -85,7 +88,9 @@ class _SplashPageState extends State<SplashPage>
                     ),
                   );
                 },
-              ))),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -94,9 +99,10 @@ class _SplashPageState extends State<SplashPage>
   //启动时间
   static const splashTime = 1;
 
-  ///检测版本更新
-  checkUpgrade() async {
-    Future.delayed(Duration(seconds: splashTime), () {
+  ///资源模式判断
+  Future<void> checkUserMode() async {
+    await fireBaseHelper.getRemoteConfig();
+    Future.delayed(const Duration(seconds: splashTime), () {
       //直接跳转到首页
       appRouter.replace(TabRoute());
     });

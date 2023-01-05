@@ -1,12 +1,12 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:musico/base/base_page.dart';
 import 'package:musico/base/refresh_list/list_more_page_searchbar_mixin.dart';
 import 'package:musico/gen/assets.gen.dart';
 import 'package:musico/pages/home/setting/setting_model.dart';
 import 'package:musico/utils/font_style_utils.dart';
 import 'package:musico/widgets/music/mini_player.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///Setting
 class TabSettingPage extends BasePage {

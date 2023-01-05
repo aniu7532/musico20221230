@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:musico/app/myapp.dart';
 import 'package:musico/base/base_page.dart';
 import 'package:musico/base/refresh_list/list_more_page_searchbar_mixin.dart';
@@ -6,9 +8,6 @@ import 'package:musico/pages/home/import/import_model.dart';
 import 'package:musico/router/router.gr.dart';
 import 'package:musico/utils/font_style_utils.dart';
 import 'package:musico/widgets/music/mini_player.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///Import
 class TabImportPage extends BasePage {

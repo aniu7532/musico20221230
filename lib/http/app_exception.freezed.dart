@@ -12,39 +12,7 @@ part of 'app_exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AppExceptionTearOff {
-  const _$AppExceptionTearOff();
-
-  AppExceptionConnectivity connectivity() {
-    return const AppExceptionConnectivity();
-  }
-
-  AppExceptionUnauthorized unauthorized() {
-    return const AppExceptionUnauthorized();
-  }
-
-  _AppExceptionErrorMessage errorWithMessage(String message) {
-    return _AppExceptionErrorMessage(
-      message,
-    );
-  }
-
-  _AppExceptionErrorBean errorWithBean(BaseBean<dynamic> bean) {
-    return _AppExceptionErrorBean(
-      bean,
-    );
-  }
-
-  _AppExceptionError error() {
-    return const _AppExceptionError();
-  }
-}
-
-/// @nodoc
-const $AppException = _$AppExceptionTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AppException {
@@ -59,11 +27,11 @@ mixin _$AppException {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? connectivity,
-    TResult Function()? unauthorized,
-    TResult Function(String message)? errorWithMessage,
-    TResult Function(BaseBean<dynamic> bean)? errorWithBean,
-    TResult Function()? error,
+    TResult? Function()? connectivity,
+    TResult? Function()? unauthorized,
+    TResult? Function(String message)? errorWithMessage,
+    TResult? Function(BaseBean<dynamic> bean)? errorWithBean,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,11 +55,11 @@ mixin _$AppException {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AppExceptionConnectivity value)? connectivity,
-    TResult Function(AppExceptionUnauthorized value)? unauthorized,
-    TResult Function(_AppExceptionErrorMessage value)? errorWithMessage,
-    TResult Function(_AppExceptionErrorBean value)? errorWithBean,
-    TResult Function(_AppExceptionError value)? error,
+    TResult? Function(AppExceptionConnectivity value)? connectivity,
+    TResult? Function(AppExceptionUnauthorized value)? unauthorized,
+    TResult? Function(_AppExceptionErrorMessage value)? errorWithMessage,
+    TResult? Function(_AppExceptionErrorBean value)? errorWithBean,
+    TResult? Function(_AppExceptionError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -110,36 +78,34 @@ mixin _$AppException {
 abstract class $AppExceptionCopyWith<$Res> {
   factory $AppExceptionCopyWith(
           AppException value, $Res Function(AppException) then) =
-      _$AppExceptionCopyWithImpl<$Res>;
+      _$AppExceptionCopyWithImpl<$Res, AppException>;
 }
 
 /// @nodoc
-class _$AppExceptionCopyWithImpl<$Res> implements $AppExceptionCopyWith<$Res> {
+class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
+    implements $AppExceptionCopyWith<$Res> {
   _$AppExceptionCopyWithImpl(this._value, this._then);
 
-  final AppException _value;
   // ignore: unused_field
-  final $Res Function(AppException) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $AppExceptionConnectivityCopyWith<$Res> {
-  factory $AppExceptionConnectivityCopyWith(AppExceptionConnectivity value,
-          $Res Function(AppExceptionConnectivity) then) =
-      _$AppExceptionConnectivityCopyWithImpl<$Res>;
+abstract class _$$AppExceptionConnectivityCopyWith<$Res> {
+  factory _$$AppExceptionConnectivityCopyWith(_$AppExceptionConnectivity value,
+          $Res Function(_$AppExceptionConnectivity) then) =
+      __$$AppExceptionConnectivityCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AppExceptionConnectivityCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
-    implements $AppExceptionConnectivityCopyWith<$Res> {
-  _$AppExceptionConnectivityCopyWithImpl(AppExceptionConnectivity _value,
-      $Res Function(AppExceptionConnectivity) _then)
-      : super(_value, (v) => _then(v as AppExceptionConnectivity));
-
-  @override
-  AppExceptionConnectivity get _value =>
-      super._value as AppExceptionConnectivity;
+class __$$AppExceptionConnectivityCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$AppExceptionConnectivity>
+    implements _$$AppExceptionConnectivityCopyWith<$Res> {
+  __$$AppExceptionConnectivityCopyWithImpl(_$AppExceptionConnectivity _value,
+      $Res Function(_$AppExceptionConnectivity) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -155,7 +121,8 @@ class _$AppExceptionConnectivity implements AppExceptionConnectivity {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AppExceptionConnectivity);
+        (other.runtimeType == runtimeType &&
+            other is _$AppExceptionConnectivity);
   }
 
   @override
@@ -176,11 +143,11 @@ class _$AppExceptionConnectivity implements AppExceptionConnectivity {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? connectivity,
-    TResult Function()? unauthorized,
-    TResult Function(String message)? errorWithMessage,
-    TResult Function(BaseBean<dynamic> bean)? errorWithBean,
-    TResult Function()? error,
+    TResult? Function()? connectivity,
+    TResult? Function()? unauthorized,
+    TResult? Function(String message)? errorWithMessage,
+    TResult? Function(BaseBean<dynamic> bean)? errorWithBean,
+    TResult? Function()? error,
   }) {
     return connectivity?.call();
   }
@@ -216,11 +183,11 @@ class _$AppExceptionConnectivity implements AppExceptionConnectivity {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AppExceptionConnectivity value)? connectivity,
-    TResult Function(AppExceptionUnauthorized value)? unauthorized,
-    TResult Function(_AppExceptionErrorMessage value)? errorWithMessage,
-    TResult Function(_AppExceptionErrorBean value)? errorWithBean,
-    TResult Function(_AppExceptionError value)? error,
+    TResult? Function(AppExceptionConnectivity value)? connectivity,
+    TResult? Function(AppExceptionUnauthorized value)? unauthorized,
+    TResult? Function(_AppExceptionErrorMessage value)? errorWithMessage,
+    TResult? Function(_AppExceptionErrorBean value)? errorWithBean,
+    TResult? Function(_AppExceptionError value)? error,
   }) {
     return connectivity?.call(this);
   }
@@ -247,23 +214,19 @@ abstract class AppExceptionConnectivity implements AppException {
 }
 
 /// @nodoc
-abstract class $AppExceptionUnauthorizedCopyWith<$Res> {
-  factory $AppExceptionUnauthorizedCopyWith(AppExceptionUnauthorized value,
-          $Res Function(AppExceptionUnauthorized) then) =
-      _$AppExceptionUnauthorizedCopyWithImpl<$Res>;
+abstract class _$$AppExceptionUnauthorizedCopyWith<$Res> {
+  factory _$$AppExceptionUnauthorizedCopyWith(_$AppExceptionUnauthorized value,
+          $Res Function(_$AppExceptionUnauthorized) then) =
+      __$$AppExceptionUnauthorizedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AppExceptionUnauthorizedCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
-    implements $AppExceptionUnauthorizedCopyWith<$Res> {
-  _$AppExceptionUnauthorizedCopyWithImpl(AppExceptionUnauthorized _value,
-      $Res Function(AppExceptionUnauthorized) _then)
-      : super(_value, (v) => _then(v as AppExceptionUnauthorized));
-
-  @override
-  AppExceptionUnauthorized get _value =>
-      super._value as AppExceptionUnauthorized;
+class __$$AppExceptionUnauthorizedCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$AppExceptionUnauthorized>
+    implements _$$AppExceptionUnauthorizedCopyWith<$Res> {
+  __$$AppExceptionUnauthorizedCopyWithImpl(_$AppExceptionUnauthorized _value,
+      $Res Function(_$AppExceptionUnauthorized) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -279,7 +242,8 @@ class _$AppExceptionUnauthorized implements AppExceptionUnauthorized {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AppExceptionUnauthorized);
+        (other.runtimeType == runtimeType &&
+            other is _$AppExceptionUnauthorized);
   }
 
   @override
@@ -300,11 +264,11 @@ class _$AppExceptionUnauthorized implements AppExceptionUnauthorized {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? connectivity,
-    TResult Function()? unauthorized,
-    TResult Function(String message)? errorWithMessage,
-    TResult Function(BaseBean<dynamic> bean)? errorWithBean,
-    TResult Function()? error,
+    TResult? Function()? connectivity,
+    TResult? Function()? unauthorized,
+    TResult? Function(String message)? errorWithMessage,
+    TResult? Function(BaseBean<dynamic> bean)? errorWithBean,
+    TResult? Function()? error,
   }) {
     return unauthorized?.call();
   }
@@ -340,11 +304,11 @@ class _$AppExceptionUnauthorized implements AppExceptionUnauthorized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AppExceptionConnectivity value)? connectivity,
-    TResult Function(AppExceptionUnauthorized value)? unauthorized,
-    TResult Function(_AppExceptionErrorMessage value)? errorWithMessage,
-    TResult Function(_AppExceptionErrorBean value)? errorWithBean,
-    TResult Function(_AppExceptionError value)? error,
+    TResult? Function(AppExceptionConnectivity value)? connectivity,
+    TResult? Function(AppExceptionUnauthorized value)? unauthorized,
+    TResult? Function(_AppExceptionErrorMessage value)? errorWithMessage,
+    TResult? Function(_AppExceptionErrorBean value)? errorWithBean,
+    TResult? Function(_AppExceptionError value)? error,
   }) {
     return unauthorized?.call(this);
   }
@@ -371,31 +335,30 @@ abstract class AppExceptionUnauthorized implements AppException {
 }
 
 /// @nodoc
-abstract class _$AppExceptionErrorMessageCopyWith<$Res> {
-  factory _$AppExceptionErrorMessageCopyWith(_AppExceptionErrorMessage value,
-          $Res Function(_AppExceptionErrorMessage) then) =
-      __$AppExceptionErrorMessageCopyWithImpl<$Res>;
+abstract class _$$_AppExceptionErrorMessageCopyWith<$Res> {
+  factory _$$_AppExceptionErrorMessageCopyWith(
+          _$_AppExceptionErrorMessage value,
+          $Res Function(_$_AppExceptionErrorMessage) then) =
+      __$$_AppExceptionErrorMessageCopyWithImpl<$Res>;
+  @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$AppExceptionErrorMessageCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
-    implements _$AppExceptionErrorMessageCopyWith<$Res> {
-  __$AppExceptionErrorMessageCopyWithImpl(_AppExceptionErrorMessage _value,
-      $Res Function(_AppExceptionErrorMessage) _then)
-      : super(_value, (v) => _then(v as _AppExceptionErrorMessage));
+class __$$_AppExceptionErrorMessageCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$_AppExceptionErrorMessage>
+    implements _$$_AppExceptionErrorMessageCopyWith<$Res> {
+  __$$_AppExceptionErrorMessageCopyWithImpl(_$_AppExceptionErrorMessage _value,
+      $Res Function(_$_AppExceptionErrorMessage) _then)
+      : super(_value, _then);
 
-  @override
-  _AppExceptionErrorMessage get _value =>
-      super._value as _AppExceptionErrorMessage;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
   }) {
-    return _then(_AppExceptionErrorMessage(
-      message == freezed
+    return _then(_$_AppExceptionErrorMessage(
+      null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
@@ -420,19 +383,19 @@ class _$_AppExceptionErrorMessage implements _AppExceptionErrorMessage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppExceptionErrorMessage &&
-            const DeepCollectionEquality().equals(other.message, message));
+            other is _$_AppExceptionErrorMessage &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
-  _$AppExceptionErrorMessageCopyWith<_AppExceptionErrorMessage> get copyWith =>
-      __$AppExceptionErrorMessageCopyWithImpl<_AppExceptionErrorMessage>(
-          this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_AppExceptionErrorMessageCopyWith<_$_AppExceptionErrorMessage>
+      get copyWith => __$$_AppExceptionErrorMessageCopyWithImpl<
+          _$_AppExceptionErrorMessage>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -449,11 +412,11 @@ class _$_AppExceptionErrorMessage implements _AppExceptionErrorMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? connectivity,
-    TResult Function()? unauthorized,
-    TResult Function(String message)? errorWithMessage,
-    TResult Function(BaseBean<dynamic> bean)? errorWithBean,
-    TResult Function()? error,
+    TResult? Function()? connectivity,
+    TResult? Function()? unauthorized,
+    TResult? Function(String message)? errorWithMessage,
+    TResult? Function(BaseBean<dynamic> bean)? errorWithBean,
+    TResult? Function()? error,
   }) {
     return errorWithMessage?.call(message);
   }
@@ -489,11 +452,11 @@ class _$_AppExceptionErrorMessage implements _AppExceptionErrorMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AppExceptionConnectivity value)? connectivity,
-    TResult Function(AppExceptionUnauthorized value)? unauthorized,
-    TResult Function(_AppExceptionErrorMessage value)? errorWithMessage,
-    TResult Function(_AppExceptionErrorBean value)? errorWithBean,
-    TResult Function(_AppExceptionError value)? error,
+    TResult? Function(AppExceptionConnectivity value)? connectivity,
+    TResult? Function(AppExceptionUnauthorized value)? unauthorized,
+    TResult? Function(_AppExceptionErrorMessage value)? errorWithMessage,
+    TResult? Function(_AppExceptionErrorBean value)? errorWithBean,
+    TResult? Function(_AppExceptionError value)? error,
   }) {
     return errorWithMessage?.call(this);
   }
@@ -516,40 +479,39 @@ class _$_AppExceptionErrorMessage implements _AppExceptionErrorMessage {
 }
 
 abstract class _AppExceptionErrorMessage implements AppException {
-  const factory _AppExceptionErrorMessage(String message) =
+  const factory _AppExceptionErrorMessage(final String message) =
       _$_AppExceptionErrorMessage;
 
   String get message;
   @JsonKey(ignore: true)
-  _$AppExceptionErrorMessageCopyWith<_AppExceptionErrorMessage> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_AppExceptionErrorMessageCopyWith<_$_AppExceptionErrorMessage>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AppExceptionErrorBeanCopyWith<$Res> {
-  factory _$AppExceptionErrorBeanCopyWith(_AppExceptionErrorBean value,
-          $Res Function(_AppExceptionErrorBean) then) =
-      __$AppExceptionErrorBeanCopyWithImpl<$Res>;
+abstract class _$$_AppExceptionErrorBeanCopyWith<$Res> {
+  factory _$$_AppExceptionErrorBeanCopyWith(_$_AppExceptionErrorBean value,
+          $Res Function(_$_AppExceptionErrorBean) then) =
+      __$$_AppExceptionErrorBeanCopyWithImpl<$Res>;
+  @useResult
   $Res call({BaseBean<dynamic> bean});
 }
 
 /// @nodoc
-class __$AppExceptionErrorBeanCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
-    implements _$AppExceptionErrorBeanCopyWith<$Res> {
-  __$AppExceptionErrorBeanCopyWithImpl(_AppExceptionErrorBean _value,
-      $Res Function(_AppExceptionErrorBean) _then)
-      : super(_value, (v) => _then(v as _AppExceptionErrorBean));
+class __$$_AppExceptionErrorBeanCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$_AppExceptionErrorBean>
+    implements _$$_AppExceptionErrorBeanCopyWith<$Res> {
+  __$$_AppExceptionErrorBeanCopyWithImpl(_$_AppExceptionErrorBean _value,
+      $Res Function(_$_AppExceptionErrorBean) _then)
+      : super(_value, _then);
 
-  @override
-  _AppExceptionErrorBean get _value => super._value as _AppExceptionErrorBean;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bean = freezed,
+    Object? bean = null,
   }) {
-    return _then(_AppExceptionErrorBean(
-      bean == freezed
+    return _then(_$_AppExceptionErrorBean(
+      null == bean
           ? _value.bean
           : bean // ignore: cast_nullable_to_non_nullable
               as BaseBean<dynamic>,
@@ -574,18 +536,18 @@ class _$_AppExceptionErrorBean implements _AppExceptionErrorBean {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppExceptionErrorBean &&
-            const DeepCollectionEquality().equals(other.bean, bean));
+            other is _$_AppExceptionErrorBean &&
+            (identical(other.bean, bean) || other.bean == bean));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(bean));
+  int get hashCode => Object.hash(runtimeType, bean);
 
   @JsonKey(ignore: true)
   @override
-  _$AppExceptionErrorBeanCopyWith<_AppExceptionErrorBean> get copyWith =>
-      __$AppExceptionErrorBeanCopyWithImpl<_AppExceptionErrorBean>(
+  @pragma('vm:prefer-inline')
+  _$$_AppExceptionErrorBeanCopyWith<_$_AppExceptionErrorBean> get copyWith =>
+      __$$_AppExceptionErrorBeanCopyWithImpl<_$_AppExceptionErrorBean>(
           this, _$identity);
 
   @override
@@ -603,11 +565,11 @@ class _$_AppExceptionErrorBean implements _AppExceptionErrorBean {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? connectivity,
-    TResult Function()? unauthorized,
-    TResult Function(String message)? errorWithMessage,
-    TResult Function(BaseBean<dynamic> bean)? errorWithBean,
-    TResult Function()? error,
+    TResult? Function()? connectivity,
+    TResult? Function()? unauthorized,
+    TResult? Function(String message)? errorWithMessage,
+    TResult? Function(BaseBean<dynamic> bean)? errorWithBean,
+    TResult? Function()? error,
   }) {
     return errorWithBean?.call(bean);
   }
@@ -643,11 +605,11 @@ class _$_AppExceptionErrorBean implements _AppExceptionErrorBean {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AppExceptionConnectivity value)? connectivity,
-    TResult Function(AppExceptionUnauthorized value)? unauthorized,
-    TResult Function(_AppExceptionErrorMessage value)? errorWithMessage,
-    TResult Function(_AppExceptionErrorBean value)? errorWithBean,
-    TResult Function(_AppExceptionError value)? error,
+    TResult? Function(AppExceptionConnectivity value)? connectivity,
+    TResult? Function(AppExceptionUnauthorized value)? unauthorized,
+    TResult? Function(_AppExceptionErrorMessage value)? errorWithMessage,
+    TResult? Function(_AppExceptionErrorBean value)? errorWithBean,
+    TResult? Function(_AppExceptionError value)? error,
   }) {
     return errorWithBean?.call(this);
   }
@@ -670,32 +632,29 @@ class _$_AppExceptionErrorBean implements _AppExceptionErrorBean {
 }
 
 abstract class _AppExceptionErrorBean implements AppException {
-  const factory _AppExceptionErrorBean(BaseBean<dynamic> bean) =
+  const factory _AppExceptionErrorBean(final BaseBean<dynamic> bean) =
       _$_AppExceptionErrorBean;
 
   BaseBean<dynamic> get bean;
   @JsonKey(ignore: true)
-  _$AppExceptionErrorBeanCopyWith<_AppExceptionErrorBean> get copyWith =>
+  _$$_AppExceptionErrorBeanCopyWith<_$_AppExceptionErrorBean> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AppExceptionErrorCopyWith<$Res> {
-  factory _$AppExceptionErrorCopyWith(
-          _AppExceptionError value, $Res Function(_AppExceptionError) then) =
-      __$AppExceptionErrorCopyWithImpl<$Res>;
+abstract class _$$_AppExceptionErrorCopyWith<$Res> {
+  factory _$$_AppExceptionErrorCopyWith(_$_AppExceptionError value,
+          $Res Function(_$_AppExceptionError) then) =
+      __$$_AppExceptionErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$AppExceptionErrorCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
-    implements _$AppExceptionErrorCopyWith<$Res> {
-  __$AppExceptionErrorCopyWithImpl(
-      _AppExceptionError _value, $Res Function(_AppExceptionError) _then)
-      : super(_value, (v) => _then(v as _AppExceptionError));
-
-  @override
-  _AppExceptionError get _value => super._value as _AppExceptionError;
+class __$$_AppExceptionErrorCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$_AppExceptionError>
+    implements _$$_AppExceptionErrorCopyWith<$Res> {
+  __$$_AppExceptionErrorCopyWithImpl(
+      _$_AppExceptionError _value, $Res Function(_$_AppExceptionError) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -711,7 +670,7 @@ class _$_AppExceptionError implements _AppExceptionError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _AppExceptionError);
+        (other.runtimeType == runtimeType && other is _$_AppExceptionError);
   }
 
   @override
@@ -732,11 +691,11 @@ class _$_AppExceptionError implements _AppExceptionError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? connectivity,
-    TResult Function()? unauthorized,
-    TResult Function(String message)? errorWithMessage,
-    TResult Function(BaseBean<dynamic> bean)? errorWithBean,
-    TResult Function()? error,
+    TResult? Function()? connectivity,
+    TResult? Function()? unauthorized,
+    TResult? Function(String message)? errorWithMessage,
+    TResult? Function(BaseBean<dynamic> bean)? errorWithBean,
+    TResult? Function()? error,
   }) {
     return error?.call();
   }
@@ -772,11 +731,11 @@ class _$_AppExceptionError implements _AppExceptionError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AppExceptionConnectivity value)? connectivity,
-    TResult Function(AppExceptionUnauthorized value)? unauthorized,
-    TResult Function(_AppExceptionErrorMessage value)? errorWithMessage,
-    TResult Function(_AppExceptionErrorBean value)? errorWithBean,
-    TResult Function(_AppExceptionError value)? error,
+    TResult? Function(AppExceptionConnectivity value)? connectivity,
+    TResult? Function(AppExceptionUnauthorized value)? unauthorized,
+    TResult? Function(_AppExceptionErrorMessage value)? errorWithMessage,
+    TResult? Function(_AppExceptionErrorBean value)? errorWithBean,
+    TResult? Function(_AppExceptionError value)? error,
   }) {
     return error?.call(this);
   }

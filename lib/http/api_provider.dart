@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:musico/app/myapp.dart';
 import 'package:musico/const/app_data.dart';
 import 'package:musico/http/api_response.dart';
@@ -20,6 +19,7 @@ import 'package:musico/http/interceptor/retry_interceptor.dart';
 import 'package:musico/http/model/base_bean.dart';
 import 'package:musico/http/repository/token_repository.dart';
 import 'package:musico/utils/toast_util.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 enum ContentType { urlEncoded, json }
 

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:musico/base/view_state.dart';
 import 'package:musico/base/mixins/api_mixin.dart';
+import 'package:musico/base/view_state.dart';
 import 'package:musico/utils/app_crash_util.dart';
 
 class ViewStateModel with ChangeNotifier, ApiMixin {

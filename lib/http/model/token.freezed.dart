@@ -12,29 +12,11 @@ part of 'token.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Token _$TokenFromJson(Map<String, dynamic> json) {
   return _Token.fromJson(json);
 }
-
-/// @nodoc
-class _$TokenTearOff {
-  const _$TokenTearOff();
-
-  _Token call({required String token}) {
-    return _Token(
-      token: token,
-    );
-  }
-
-  Token fromJson(Map<String, Object?> json) {
-    return Token.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Token = _$TokenTearOff();
 
 /// @nodoc
 mixin _$Token {
@@ -48,54 +30,57 @@ mixin _$Token {
 /// @nodoc
 abstract class $TokenCopyWith<$Res> {
   factory $TokenCopyWith(Token value, $Res Function(Token) then) =
-      _$TokenCopyWithImpl<$Res>;
+      _$TokenCopyWithImpl<$Res, Token>;
+  @useResult
   $Res call({String token});
 }
 
 /// @nodoc
-class _$TokenCopyWithImpl<$Res> implements $TokenCopyWith<$Res> {
+class _$TokenCopyWithImpl<$Res, $Val extends Token>
+    implements $TokenCopyWith<$Res> {
   _$TokenCopyWithImpl(this._value, this._then);
 
-  final Token _value;
   // ignore: unused_field
-  final $Res Function(Token) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = freezed,
+    Object? token = null,
   }) {
     return _then(_value.copyWith(
-      token: token == freezed
+      token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
-  factory _$TokenCopyWith(_Token value, $Res Function(_Token) then) =
-      __$TokenCopyWithImpl<$Res>;
+abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
+  factory _$$_TokenCopyWith(_$_Token value, $Res Function(_$_Token) then) =
+      __$$_TokenCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String token});
 }
 
 /// @nodoc
-class __$TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
-    implements _$TokenCopyWith<$Res> {
-  __$TokenCopyWithImpl(_Token _value, $Res Function(_Token) _then)
-      : super(_value, (v) => _then(v as _Token));
+class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
+    implements _$$_TokenCopyWith<$Res> {
+  __$$_TokenCopyWithImpl(_$_Token _value, $Res Function(_$_Token) _then)
+      : super(_value, _then);
 
-  @override
-  _Token get _value => super._value as _Token;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = freezed,
+    Object? token = null,
   }) {
-    return _then(_Token(
-      token: token == freezed
+    return _then(_$_Token(
+      token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
@@ -123,27 +108,30 @@ class _$_Token implements _Token {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Token &&
-            const DeepCollectionEquality().equals(other.token, token));
+            other is _$_Token &&
+            (identical(other.token, token) || other.token == token));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(token));
 
   @JsonKey(ignore: true)
   @override
-  _$TokenCopyWith<_Token> get copyWith =>
-      __$TokenCopyWithImpl<_Token>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, token);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TokenCopyWith<_$_Token> get copyWith =>
+      __$$_TokenCopyWithImpl<_$_Token>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TokenToJson(this);
+    return _$$_TokenToJson(
+      this,
+    );
   }
 }
 
 abstract class _Token implements Token {
-  const factory _Token({required String token}) = _$_Token;
+  const factory _Token({required final String token}) = _$_Token;
 
   factory _Token.fromJson(Map<String, dynamic> json) = _$_Token.fromJson;
 
@@ -151,5 +139,6 @@ abstract class _Token implements Token {
   String get token;
   @override
   @JsonKey(ignore: true)
-  _$TokenCopyWith<_Token> get copyWith => throw _privateConstructorUsedError;
+  _$$_TokenCopyWith<_$_Token> get copyWith =>
+      throw _privateConstructorUsedError;
 }

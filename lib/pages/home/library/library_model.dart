@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flustars/flustars.dart';
+import 'package:flutter/material.dart';
 import 'package:musico/app/myapp.dart';
 import 'package:musico/base/refresh_list/list_more_page_searchbar_mixin.dart';
 import 'package:musico/base/view_state.dart';
@@ -11,8 +13,6 @@ import 'package:musico/utils/helper/audio_query_helper.dart';
 import 'package:musico/utils/toast_util.dart';
 import 'package:musico/widgets/dialog/bottom_options_dialog.dart';
 import 'package:musico/widgets/dialog/textinput_dialog.dart';
-import 'package:flustars/flustars.dart';
-import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 mixin _Protocol {}
@@ -35,6 +35,12 @@ class LibraryModel extends BaseListMoreModel<PlaylistModel> with _Protocol {
       }
     });
     return super.initData();
+  }
+
+  @override
+  void dispose() {
+    subscription?.cancel();
+    super.dispose();
   }
 
   @override

@@ -1,6 +1,6 @@
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:musico/base/view_state_list_model.dart';
 import 'package:musico/utils/app_crash_util.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 ///多页，分页获取数据，下拉可刷新, 上拉加载更多
 

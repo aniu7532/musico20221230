@@ -59,7 +59,7 @@ class ImageUtils {
           height: height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(r),
-            image: DecorationImage(image: image, fit: BoxFit.fitWidth),
+            image: DecorationImage(image: image, fit: BoxFit.cover),
             // boxShadow: [
             //   BoxShadow(
             //       color: const Color(0xffd2d2d2).withAlpha(120),
@@ -82,7 +82,7 @@ class ImageUtils {
       ) {
         return errorWidget.image(width: width, height: height, fit: fit);
       },
-      fadeInDuration: const Duration(seconds: 1),
+      fadeInDuration: const Duration(milliseconds: 100),
     );
   }
 

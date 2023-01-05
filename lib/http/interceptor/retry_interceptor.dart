@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:musico/http/interceptor/dio_connectivity_request_retrier.dart';
 import 'package:dio/dio.dart';
+import 'package:musico/http/interceptor/dio_connectivity_request_retrier.dart';
 
 class RetryOnConnectionChangeInterceptor extends Interceptor {
   RetryOnConnectionChangeInterceptor({

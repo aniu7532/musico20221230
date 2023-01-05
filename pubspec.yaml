@@ -15,7 +15,7 @@ dependencies:
   # 状态管理
   provider: 6.0.2
   # 路由
-  auto_route: 3.2.4
+  auto_route: 5.0.3
   # 网络请求
   dio: 4.0.6
   # 网络请求日志
@@ -31,8 +31,8 @@ dependencies:
   wechat_camera_picker: 3.4.0
   #图片显示  https://pub.flutter-io.cn/packages/photo_view
   photo_view: 0.14.0
-  #视频播放  https://pub.flutter-io.cn/packages/video_player
-  video_player: 2.4.0
+  #youtube 视频播放
+  youtube_player_flutter: ^8.1.2
   # Dart 常用工具类库 https://github.com/Sky24n/common_utils
   flustars: 2.0.1
   #屏幕适配 https://pub.flutter-io.cn/packages/flutter_screenutil
@@ -45,6 +45,8 @@ dependencies:
   flutter_easyloading: 3.0.3
   #指示器
   dots_indicator: ^2.1.0
+  #轮播
+  carousel_slider: ^4.2.1
   #列表刷新加载
   #https://github.com/peng8350/flutter_pulltorefresh/blob/master/README_CN.md
   pull_to_refresh: 2.0.0
@@ -53,7 +55,7 @@ dependencies:
   #加载动画 https://pub.dev/packages/loading_animation_widget/versions
   loading_animation_widget: 1.1.0+5
   #电话、email https://pub.dev/packages/url_launcher/install
-  url_launcher: 6.0.10
+  url_launcher: 6.1.7
   cupertino_icons: ^1.0.2
   #事件传输 https://pub.flutter-io.cn/packages/event_bus
   event_bus: 2.0.0
@@ -64,22 +66,24 @@ dependencies:
   #国际化  https://pub.flutter-io.cn/packages/intl
   intl: 0.17.0
   #加载第三方网页
-  webview_flutter: 3.0.4
+  webview_flutter: 4.0.1
   path_provider: ^2.0.11
   open_file: 3.2.1
   # 生成实体数据
-  freezed_annotation: 1.1.0
-  json_annotation: 4.4.0
+  freezed_annotation: 2.2.0
+  json_annotation: 4.6.0
   # 音乐播放器
   just_audio: 0.9.30
   audio_service: 0.18.7
   # 查询本地可播放音乐
   on_audio_query: 2.6.1
   # firebase
-  firebase_core: 2.4.0
+  firebase_core: 2.4.1
   firebase_analytics: 10.0.8
+  firebase_remote_config: 3.0.8
   # facebook https://facebook.meedu.app/docs/5.x.x/example
   flutter_facebook_auth: 5.0.0+1
+
 
 
 dependency_overrides:
@@ -95,9 +99,9 @@ dev_dependencies:
   #  路由生成器
   #  flutter packages pub run build_runner build --delete-conflicting-outputs
   #  flutter packages pub run build_runner watch
-  auto_route_generator: 3.2.3
+  auto_route_generator: 5.0.3
   # 实体数据生成器
-  freezed: 1.1.1
+  freezed: 2.2.0
   json_serializable:
 
   #lint检查
@@ -164,6 +168,7 @@ flutter:
     - assets/images/imports/
     - assets/images/setting/
     - assets/images/play/
+    - assets/images/index/
 
   fonts:
    - family: ZzIcons

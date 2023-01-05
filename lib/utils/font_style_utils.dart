@@ -642,6 +642,11 @@ class FSUtils {
     color: ColorName.secondaryColor,
     fontSize: 14,
     fontWeight: FontWeight.normal,
+  ); // normal_14_92DD13
+  static const normal_14_CEF91C = TextStyle(
+    color: Color(0xFFCEF91C),
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
   );
 
   // normal_14_969898
@@ -659,6 +664,11 @@ class FSUtils {
 
   static const weight500_14_000000 = TextStyle(
     color: Colors.black,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
+  static const w500_14_D3D3D3 = TextStyle(
+    color: Color(0xFFD3D3D3),
     fontSize: 14,
     fontWeight: FontWeight.w500,
   );

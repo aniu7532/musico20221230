@@ -138,6 +138,11 @@ class AudioPlayerHelper {
     _audioHandler.stop();
   }
 
+  Future<void> dispose() async {
+    await _audioHandler.stop();
+    await _audioHandler._player.dispose();
+  }
+
   void seek(Duration newPosition) {
     _audioHandler.seek(newPosition);
   }

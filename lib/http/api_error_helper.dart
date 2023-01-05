@@ -1,7 +1,7 @@
+import 'package:flustars/flustars.dart';
 import 'package:musico/http/app_exception.dart';
 import 'package:musico/http/model/base_bean.dart';
 import 'package:musico/utils/toast_util.dart';
-import 'package:flustars/flustars.dart';
 
 ///app错误帮助类
 class ApiErrorHelper {

@@ -1,3 +1,4 @@
+import 'package:musico/const/app_data.dart';
 import 'package:musico/pages/home/import/tab_import_page.dart';
 import 'package:musico/pages/home/library/playlist_detail/playlist_detail_page.dart';
 import 'package:musico/pages/home/library/tab_library_page.dart';
@@ -10,6 +11,11 @@ import 'package:musico/pages/imports/import_from_phone/import_from_phone_page.da
 import 'package:musico/pages/playing/playing_page.dart';
 import 'package:musico/pages/selector/select_palylist/select_playlist_page.dart';
 import 'package:musico/pages/splash_page.dart';
+import 'package:musico/pages/with_data/index/index_page.dart';
+import 'package:musico/pages/with_data/search/search_page.dart';
+import 'package:musico/pages/with_data/search/search_rst_page.dart';
+import 'package:musico/pages/with_data/selector/select_playlist/d_select_playlist_page.dart';
+import 'package:musico/pages/with_data/selector/select_singer/select_singer_page.dart';
 import 'package:musico/utils/app_crash_util.dart';
 import 'package:musico/widgets/file_select/image_preview_page.dart';
 import 'package:musico/widgets/file_select/video_preview_page.dart';
@@ -56,12 +62,7 @@ class AppRouteObserver extends AutoRouterObserver {
     //首页
     AutoRoute(
       page: TabPage,
-      children: [
-        AutoRoute(path: 'track', page: TabTrackPage),
-        AutoRoute(path: 'library', page: TabLibraryPage),
-        AutoRoute(path: 'import', page: TabImportPage),
-        AutoRoute(path: 'setting', page: TabSettingPage),
-      ],
+      children: withDataTabs,
     ),
 
     //音乐播放页面
@@ -83,6 +84,25 @@ class AppRouteObserver extends AutoRouterObserver {
 
     // --------- 选择器 --------
     AutoRoute(path: 'select_playlist_page', page: SelectPlaylistPage),
+    ...noDataTabs,
+    ...withDataTabs,
+    ...withDataPages
   ],
 )
 class $AppRouter {}
+
+const withDataTabs = [
+  AutoRoute(path: 'index', page: TabIndexPage),
+  AutoRoute(path: 'search_page', page: TabSearchPage),
+  AutoRoute(path: 'search_rst_page', page: TabSearchRstPage),
+];
+const withDataPages = [
+  AutoRoute(path: 'select_singer_page', page: SelectSingerPage),
+  AutoRoute(path: 'd_select_playlist_page', page: DSelectPlaylistPage),
+];
+const noDataTabs = [
+  AutoRoute(path: 'track', page: TabTrackPage),
+  AutoRoute(path: 'library', page: TabLibraryPage),
+  AutoRoute(path: 'import', page: TabImportPage),
+  AutoRoute(path: 'setting', page: TabSettingPage),
+];

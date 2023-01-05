@@ -2,9 +2,6 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:musico/base/view_state_model.dart';
 import 'package:musico/utils/helper/cache_timer_helper.dart';
-import 'package:musico/http/app_exception.dart';
-import 'package:musico/http/store_key.dart';
-import 'package:musico/utils/store_util.dart';
 import 'package:musico/utils/toast_util.dart';
 import 'package:musico/widgets/common/loading_button.dart';
 
@@ -190,84 +187,11 @@ abstract class BaseInfoEditModel extends ViewStateModel {
     btnController.reset();
   }
 
-  /// 批量上传临时文件，过一段时间会自动清理
-  ///
-  /// [files] 文件在内部存储的绝对路径
-  Future<bool> uploadFile(List<String> files) async {
-    const url = '/oss-service/api/v1/fileservice/files/advanced/batch/upload';
-    final request = {
-      "isExpire": '1', //是否过期（0 需要过期-每次需重新获取预览地址(默认)，1-不过期具有公共读属性）
-      "corpId": '', //企业id
-    };
-    final result = (await apiModel.postFiles(url, files, params: request)).when(
-      success: (success) => success,
-      error: (error) => error,
-    );
-    if (result is AppException || ObjectUtil.isEmpty(result.data)) {
-      MyToast.showError('保存失败：${result.message}');
-      return false;
-    }
-    return false;
-  }
-
-  /// 文件落盘，将文件真正存储在用户的云空间
-  ///
-  /// [mediaIds] 由[uploadFile]返回的id数组
-  Future<bool> fileFling(List<String> mediaIds) async {
-    const url = '/oss-service/api/v1/fileservice/files/filing';
-    final request = {
-      "mediaIds": mediaIds, //文件服务唯一mediaId值(可多个)
-      "corpId": '', //企业id
-    };
-    final result = (await post(url, request)).when(
-      success: (success) => success,
-      error: (error) => error,
-    );
-    if (result is AppException || ObjectUtil.isEmpty(result.data)) {
-      MyToast.showError('保存失败：${result.message}');
-      return false;
-    }
-    return false;
-  }
-
-  /// 文件上传
-  ///
-  /// [urls] 全路径url地址
-  Future<List?> uploadFilesByUrl(List<String>? urls) async {
-    if (ObjectUtil.isEmpty(urls)) return null;
-    urls!.removeWhere((element) => ObjectUtil.isEmptyString(element));
-    if (ObjectUtil.isEmpty(urls)) return null;
-
-    const url = '/oss-service/api/v1/fileservice/files/url/upload/files';
-    final request = {
-      "fileUrls": urls,
-    };
-    final result = (await post(url, request)).when(
-      success: (success) => success,
-      error: (error) => error,
-    );
-    if (result is AppException || ObjectUtil.isEmpty(result.data)) {
-      return null;
-    }
-    return result.data;
-  }
-
-  ///缓存的key
-  String getStoreKey() => StoreKey.baseInfo.getStringWithBaseInfoType(baseType);
-
   ///根据操作员 保存编辑的信息
   cacheBaseInfoWithCID() {}
 
   ///根据操作员 恢复缓存
   restoreBaseInfoWithCID() async {}
-
-  ///保存成功后，需要清空当前缓存
-  void clearCache() {
-    ///从缓存里面删除
-    if (useCache && opType == OperateType.add) {
-      storeUtil.removeValue(getStoreKey());
-    }
-  }
 
   @override
   void dispose() {

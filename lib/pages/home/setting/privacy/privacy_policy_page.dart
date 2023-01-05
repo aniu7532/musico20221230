@@ -25,17 +25,26 @@ class _PrivacyPolicyPageState extends BasePageState<PrivacyPolicyPage>
     return PrivacyPolicyModel(requestParam: widget.requestParams);
   }
 
+  late WebViewController webViewController;
+
   @override
   void initState() {
     super.initState();
+    webViewController = WebViewController();
+    webViewController
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setNavigationDelegate(NavigationDelegate(
+        onWebResourceError: (WebResourceError error) {},
+      ))
+      ..loadRequest(Uri.parse(widget.requestParams!['url']));
   }
 
   @override
   Widget buildContentWidget() {
     return Container(
       color: ColorName.themeColor,
-      child: WebView(
-        initialUrl: widget.requestParams!['url'],
+      child: WebViewWidget(
+        controller: webViewController,
       ),
     );
   }

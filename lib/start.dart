@@ -33,25 +33,4 @@ Future<void> start() async {
       );
     },
   );
-
-  // await runZonedGuarded(() async {
-  //   SystemChrome.setSystemUIOverlayStyle(
-  //     const SystemUiOverlayStyle(
-  //       statusBarIconBrightness: Brightness.light, // 状态栏字体颜色（白色）
-  //       statusBarColor: ColorName.themeColor, // 状态栏背景色
-  //     ),
-  //   );
-  //
-  //   HttpOverrides.global = MyHttpOverrides();
-  //
-  //   runApp(
-  //     const MyApp(),
-  //   );
-  // }, (Object obj, StackTrace stack) {
-  //   if (kDebugMode) {
-  //     log(obj.toString(), stackTrace: stack);
-  //   } else {
-  //     //其它异常捕获与日志收集
-  //   }
-  // });
 }

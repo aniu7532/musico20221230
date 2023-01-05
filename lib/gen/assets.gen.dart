@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 
@@ -34,6 +34,7 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/img_upgrade.png');
 
   $AssetsImagesImportsGen get imports => const $AssetsImagesImportsGen();
+  $AssetsImagesIndexGen get index => const $AssetsImagesIndexGen();
 
   /// File path: assets/images/mini_player_icon.png
   AssetGenImage get miniPlayerIcon =>
@@ -91,13 +92,17 @@ class $AssetsImagesAppbarGen {
   AssetGenImage get appbarMe =>
       const AssetGenImage('assets/images/appbar/appbar_me.png');
 
+  /// File path: assets/images/appbar/appbar_search.png
+  AssetGenImage get appbarSearch =>
+      const AssetGenImage('assets/images/appbar/appbar_search.png');
+
   /// File path: assets/images/appbar/appbar_track.png
   AssetGenImage get appbarTrack =>
       const AssetGenImage('assets/images/appbar/appbar_track.png');
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [appbarImport, appbarLibrary, appbarMe, appbarTrack];
+      [appbarImport, appbarLibrary, appbarMe, appbarSearch, appbarTrack];
 }
 
 class $AssetsImagesBottomTabbarGen {
@@ -214,6 +219,25 @@ class $AssetsImagesImportsGen {
         typeGoogle,
         typePhone
       ];
+}
+
+class $AssetsImagesIndexGen {
+  const $AssetsImagesIndexGen();
+
+  /// File path: assets/images/index/index_crown.png
+  AssetGenImage get indexCrown =>
+      const AssetGenImage('assets/images/index/index_crown.png');
+
+  /// File path: assets/images/index/search_gray.png
+  AssetGenImage get searchGray =>
+      const AssetGenImage('assets/images/index/search_gray.png');
+
+  /// File path: assets/images/index/search_green.png
+  AssetGenImage get searchGreen =>
+      const AssetGenImage('assets/images/index/search_green.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [indexCrown, searchGray, searchGreen];
 }
 
 class $AssetsImagesNoDataGen {
