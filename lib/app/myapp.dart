@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:musico/gen/colors.gen.dart';
 import 'package:musico/generated/l10n.dart';
 import 'package:musico/router/router.dart';

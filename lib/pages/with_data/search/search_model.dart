@@ -15,11 +15,11 @@ class SearchModel extends ViewStateModel {
       'lover',
       'car park',
       'way to you heart',
-      'f**k with you',
+      'walk with you',
       'one letter for you'
     ];
 
-    return super.initData();
+    return true;
   }
 
   ///

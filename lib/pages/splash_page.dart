@@ -6,7 +6,7 @@ import 'package:musico/app/myapp.dart';
 import 'package:musico/gen/assets.gen.dart';
 import 'package:musico/gen/colors.gen.dart';
 import 'package:musico/router/router.gr.dart';
-import 'package:musico/utils/helper/database_helper.dart';
+import 'package:musico/utils/helper/filebase_helper.dart';
 
 ///启动页
 class SplashPage extends StatefulWidget {
@@ -97,7 +97,7 @@ class _SplashPageState extends State<SplashPage>
   }
 
   //启动时间
-  static const splashTime = 1;
+  static const splashTime = 3;
 
   ///资源模式判断
   Future<void> checkUserMode() async {

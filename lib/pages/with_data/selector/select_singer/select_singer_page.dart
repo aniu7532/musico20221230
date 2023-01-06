@@ -52,14 +52,14 @@ class _SelectSingerPageState extends BasePageState<SelectSingerPage>
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Text(
                     'x',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: FSUtils.normal_15_FFFFFF,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 6,
                   ),
                   Text(

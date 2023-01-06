@@ -5,7 +5,6 @@ import 'package:musico/pages/imports/import_from_phone/import_from_phone_model.d
 import 'package:musico/utils/font_style_utils.dart';
 import 'package:musico/utils/strings.dart';
 import 'package:musico/widgets/music/mini_player.dart';
-import 'package:musico/widgets/primary_button.dart';
 import 'package:musico/widgets/zz_radio_button.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,7 @@ class _ImportFromPhonePageState extends BasePageState<ImportFromPhonePage>
             model.selectAll();
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Center(
               child: Text(
                 model.isSelectedAll ? 'Select none' : 'Select All',

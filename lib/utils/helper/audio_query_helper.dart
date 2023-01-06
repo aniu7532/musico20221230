@@ -1,11 +1,11 @@
 import 'dart:io';
 
+import 'package:flustars/flustars.dart';
+import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:musico/app/myapp.dart';
 import 'package:musico/const/app_const.dart';
 import 'package:musico/pages/imports/import_from_phone/import_from_phone_model.dart';
-import 'package:flustars/flustars.dart';
-import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
 import 'package:on_audio_query/on_audio_query.dart';
 
 final AudioQueryHelper audioQueryHelper = AudioQueryHelper();
@@ -151,7 +151,7 @@ class AudioQueryHelper {
     return id;
   }
 
-  ///查询歌单种的歌曲
+  ///查询歌单中的歌曲
   Future<List<SongModel>> queryFromPlaylist(
     int id,
   ) async {
@@ -188,6 +188,7 @@ class AudioQueryHelper {
     return false;
   }
 
+  ///通过title获取 针对某些id有问题的歌曲
   Future<bool> queryStarByTitle(
     String title,
   ) async {
@@ -211,7 +212,9 @@ class AudioQueryHelper {
     return false;
   }
 
-  ///xiaoxingxing
+  ///
+  /// 收藏
+  ///
   Future<bool> Star(
     int id,
   ) async {
@@ -242,7 +245,7 @@ class AudioQueryHelper {
     return false;
   }
 
-  ///查询歌单种的歌曲
+  ///查询歌单中的歌曲
   Future<List<SongModel>> queryFromPlaylistReal(
     int id,
   ) async {

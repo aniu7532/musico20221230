@@ -1,26 +1,16 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:musico/app/myapp.dart';
 import 'package:musico/base/base_page.dart';
 import 'package:musico/base/base_page_mixin.dart';
-import 'package:musico/base/refresh_list/list_more_page_searchbar_mixin.dart';
 import 'package:musico/const/app_data.dart';
 import 'package:musico/gen/assets.gen.dart';
 import 'package:musico/gen/colors.gen.dart';
-import 'package:musico/pages/with_data/index/index_model.dart';
-import 'package:musico/pages/with_data/search/search_model.dart';
 import 'package:musico/pages/with_data/search/search_rst_model.dart';
 import 'package:musico/router/router.gr.dart';
-import 'package:musico/utils/divider_urils.dart';
 import 'package:musico/utils/font_style_utils.dart';
-import 'package:musico/utils/image_utils.dart';
-import 'package:musico/utils/size_utils.dart';
 import 'package:musico/widgets/common/cus_tabbar.dart';
-import 'package:musico/widgets/music/asset_button.dart';
 import 'package:musico/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:musico/widgets/search_textfield_widget.dart';
-import 'package:musico/widgets/zz_app_bar.dart';
 
 ///SearchRst
 class TabSearchRstPage extends BasePage {
@@ -85,8 +75,6 @@ class _TabSearchRstPageState extends BasePageState<TabSearchRstPage>
       },
     );
   }
-
-  bool get wantKeepAlive => true;
 
   ///无数据的情况
   @override
